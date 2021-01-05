@@ -1,0 +1,13 @@
+<h2>Edit Information</h2>
+<%= form_with model: @vol do |f|%>
+    <%= f.label :name%>
+    <%= f.text_field :name%>
+    <%= f.submit "Edit User"%>
+<%end%>
+<%= button_to "Delete Account",@vol,method: :delete%>
+
+<%if flash[:errors]%>
+    <%flash[:errors].each do |e|%>
+        <%=e%>
+    <%end%>
+<%end%>

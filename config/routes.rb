@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :volunteers, only:[:new, :create, :show, :update, :delete]
-  resources :trips, only:[:show, :update]
-  resources :logins, only:[:new, :create, :delete]
+  resources :volunteers, only:[:new, :create, :show, :edit, :update, :destroy]
+  resources :trips, only:[:show]
+  patch '/trips/:id', to: 'trips#update', as: 'update_trip'
+  get '/login', to: 'logins#new'
+  post '/login', to: 'logins#create'
+  delete '/login', to: 'logins#destroy', as: 'logout'
   root 'application#home'
 end

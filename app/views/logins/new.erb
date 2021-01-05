@@ -1,6 +1,15 @@
 <h1>Login Page</h1>
-<form method='post'>
-  <input name='username'>
-  <input type='password' name='password'>
+<form action='/login' method='post'>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label>Username:</label>
+  <input name='username'><br>
+  <label>Password:</label>
+  <input type='password' name='password'><br>
   <input type='submit' value='login'>
 </form>
+
+<%if flash[:errors]%>
+    <%flash[:errors].each do |e|%>
+        <%=e%>
+    <%end%>
+<%end%>

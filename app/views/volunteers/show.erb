@@ -1,4 +1,5 @@
 <h1>Hello, <%=@volunteer.name%></h1>
+<%= button_to "Edit User Info",edit_volunteer_path,method: :get%>
 <h3>Here are the possible trips you can select</h3>
 <table style="width:60%">
     <tr>
@@ -14,4 +15,21 @@
     <%end%>
     </tr>
 
+</table><br>
+<h3>Your current trips</h3>
+<table style="width:60%">
+    <tr>
+        <th>Trip ID</th>
+        <th>Info</th>
+        <th>Link</th>
+    </tr>
+    <%@mytrips.each do |trip|%>
+    <tr>
+        <td><%=trip.id%></td>
+        <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
+        <td><%=link_to "Trip", trip%></td>
+    <%end%>
+    </tr>
+
 </table>
+<%= button_to "Logout",logout_path,method: :delete%>

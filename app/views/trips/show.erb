@@ -8,5 +8,8 @@ Food Items:
             <li><%=i.name%></li>
     <% end %>
 </ul>
-<%=button_to%>
-
+<%if @trip.volunteer_id == @manager.id%>
+    <%=button_to "Sign up for trip.",@trip,method: :patch%>
+<%else%>
+    <%=button_to "Remove trip.",@trip,method: :patch%>
+<%end%>
