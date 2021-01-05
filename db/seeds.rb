@@ -37,7 +37,9 @@ end
 
 50.times do
   FoodItem.create({
-    name: Faker::Food.ingredient
+    name: Faker::Food.ingredient,
+    owner_type: "GroceryStore",
+    owner_id: GroceryStore.all.map{|g| g.id}.sample
   })
 
 
