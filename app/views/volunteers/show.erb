@@ -1,0 +1,17 @@
+<h1>Hello, <%=@volunteer.name%></h1>
+<h3>Here are the possible trips you can select</h3>
+<table style="width:60%">
+    <tr>
+        <th>Trip ID</th>
+        <th>Info</th>
+        <th>Link</th>
+    </tr>
+    <%@trips.each do |trip|%>
+    <tr>
+        <td><%=trip.id%></td>
+        <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
+        <td><%=link_to "Trip", trip%></td>
+    <%end%>
+    </tr>
+
+</table>

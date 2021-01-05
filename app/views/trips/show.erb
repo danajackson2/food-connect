@@ -1,0 +1,12 @@
+<h1>Trip Info</h1>
+Distance: <%=@trip.distance%> mi<br>
+Foodbank: <%=@trip.food_bank.name%><br>
+Grocery Store: <%=@trip.grocery_store.name%><br>
+Food Items:
+<ul>
+    <%@trip.food_items.each do |i|%>
+            <li><%=i.name%></li>
+    <% end %>
+</ul>
+<%=button_to%>
+
