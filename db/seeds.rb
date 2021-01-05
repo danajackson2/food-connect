@@ -12,16 +12,18 @@ Trip.destroy_all
 Volunteer.destroy_all
 FoodItem.destroy_all
 
-10.times do
-    Volunteer.create({
-      name: Faker::Name.name,
-      location: (1..100).to_a.sample,
-      username: Faker::Name.name,
-      password_digest: Faker::Bank.account_number
-    })
-end
+# 10.times do
+#     Volunteer.create({
+#       name: Faker::Name.name,
+#       location: (1..100).to_a.sample,
+#       username: Faker::Name.name,
+#       password_digest: Faker::Bank.account_number
+#     })
+# end
 
-10.times do 
+Volunteer.create(username: "Manager", password_digest: "whatever")
+
+10.times do
   FoodBank.create({
     name: "FB: #{Faker::Company.name}",
     location: (1..100).to_a.sample
@@ -35,10 +37,20 @@ end
   })
 end
 
+10.times do
+  Trip.create({
+    grocery_store_id: GroceryStore.all.map{|f|f.id}.sample,
+    food_bank_id: FoodBank.all.map{|f|f.id}.sample,
+    volunteer_id: Volunteer.find_by(username: "Manager").id
+  })
+end
+
 50.times do
   FoodItem.create({
-    name: Faker::Food.ingredient
+    name: Faker::Food.ingredient,
+    owner_type: "Trip",
+    owner_id: Trip.all.map{|g| g.id}.sample
   })
-
-
 end
+
+puts "yay"
