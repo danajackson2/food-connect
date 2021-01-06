@@ -1,17 +1,16 @@
 class TripsController < ApplicationController
     before_action :has_access?, only: [:show,:update]
-
+    
     def has_access?
-        if !session[:username] 
-            redirect_to root_path
-        elsif Trip.find(params[:id]).volunteer_id != Volunteer.find_by(username: "Manager").id
-            redirect_to Volunteer.find_by(username: session[:username])
+        if Trip.find(params[:id]).volunteer_id != Volunteer.find_by(username: "Manager").id && Trip.find(params[:id]).volunteer_id != fetch_user.id 
+            redirect_to fetch_user
         end
     end
 
     def show
         @trip = Trip.find(params[:id])
         @manager = Volunteer.find_by(username: "Manager")
+        @viewer = fetch_user
     end
 
     def update

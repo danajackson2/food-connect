@@ -1,5 +1,11 @@
 class LoginsController < ApplicationController
-    def new     
+    skip_before_action :require_login, only:[:create, :new]
+    
+
+    def new
+        if session[:username]
+            redirect_to Volunteer.find_by(username: session[:username])
+        end
     end
 
     def create
