@@ -4,16 +4,17 @@ class LoginsController < ApplicationController
 
     def new
         if session[:username]
-            redirect_to Volunteer.find_by(username: session[:username])
+            @user = get_user
+            redirect_to @user
         end
     end
 
     def create
-        @vol = Volunteer.find_by(username: params[:username])
-        if @vol
-            return head(:forbidden) unless @vol.authenticate(params[:password])
-            session[:username] = @vol.username
-            redirect_to @vol
+        @user = get_user
+        if @user
+            return head(:forbidden) unless @user.authenticate(params[:password])
+            log_in_user(@user.username)
+            redirect_to @user
         else
             flash[:errors] = ["username/password is incorrect."]
             redirect_to login_path
@@ -24,4 +25,12 @@ class LoginsController < ApplicationController
         session.delete :username
         redirect_to root_path
     end
+
+    private 
+
+    def get_user
+        users = Volunteer.all + FoodBank.all
+        users.find{|user| user.username == params[:username]}
+    end
+
 end

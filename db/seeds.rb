@@ -26,6 +26,8 @@ Volunteer.create(name: "Manager",username: "Manager", location: 1,password_diges
 10.times do
   FoodBank.create({
     name: "FB: #{Faker::Company.name}",
+    username: Faker::Name.name,
+    password_digest: "abcd",
     location: (1..100).to_a.sample
   })
 end

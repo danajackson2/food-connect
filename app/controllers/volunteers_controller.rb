@@ -21,7 +21,7 @@ class VolunteersController < ApplicationController
 
     def show
         @volunteer = Volunteer.find(params[:id])
-        @trips = Volunteer.find_by(username: "Manager").trips
+        @trips = Volunteer.manager.trips
         @mytrips = @volunteer.trips
     end
 

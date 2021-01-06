@@ -1,0 +1,20 @@
+<h1>Register New FoodBank</h1>
+<%=form_with model: @food_bank do |f|%>
+    <%=f.label :name%>
+    <%=f.text_field :name%><br>
+    <%=f.label :username%>
+    <%=f.text_field :username%><br>
+    <%=f.label :location%>
+    <%=f.number_field :location%><br>
+    <%=f.label :password%>
+    <%=f.text_field :password%><br>
+    <%=f.label :password_confirmation%>
+    <%=f.text_field :password_confirmation%><br>
+    <%=f.submit "Create FoodBank"%>
+<%end%>
+
+<%if flash[:errors]%>
+    <%flash[:errors].each do |e|%>
+        <%=e%>
+    <%end%>
+<%end%>

@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
     def fetch_user
         @logged_in = logged_in?
-        @vol = Volunteer.find_by(username: current_username) if logged_in?
+        @users = Volunteer.all + FoodBank.all
+        @user = @users.find{|user| user.username == current_username} if logged_in?
     end 
 
     def require_login
