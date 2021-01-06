@@ -1,15 +1,10 @@
 class VolunteersController < ApplicationController
-    before_action :has_access?, only: [:show,:edit,:destroy]
+    skip_before_action :require_login, only:[:create, :new]
 
-    def has_access?
-        if !session[:username] 
-            redirect_to root_path
-        elsif Volunteer.find_by(username: session[:username]).id != params[:id].to_i
+    def new
+        if session[:username]
             redirect_to Volunteer.find_by(username: session[:username])
         end
-    end
-    
-    def new
         @volunteer = Volunteer.new
     end
 
@@ -48,6 +43,7 @@ class VolunteersController < ApplicationController
 
     def destroy
         @vol = Volunteer.find(params[:id])
+        @vol.delete_trips
         @vol.destroy
         session.delete :username
         redirect_to root_path
@@ -56,6 +52,6 @@ class VolunteersController < ApplicationController
     private
 
     def volunteer_params
-        params.require(:volunteer).permit(:name, :username, :password, :password_confirmation)
+        params.require(:volunteer).permit(:name, :username, :location, :password, :password_confirmation)
     end
 end

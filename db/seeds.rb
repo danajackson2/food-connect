@@ -21,7 +21,7 @@ FoodItem.destroy_all
 #     })
 # end
 
-Volunteer.create(username: "Manager", password_digest: "whatever")
+Volunteer.create(name: "Manager",username: "Manager", location: 1,password_digest: "whatever")
 
 10.times do
   FoodBank.create({

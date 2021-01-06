@@ -1,5 +1,5 @@
 <h1>Trip Info</h1>
-Distance: <%=@trip.distance%> mi<br>
+Distance: <%=@trip.distance(@viewer)%> mi<br>
 Foodbank: <%=@trip.food_bank.name%><br>
 Grocery Store: <%=@trip.grocery_store.name%><br>
 Food Items:
@@ -9,7 +9,8 @@ Food Items:
     <% end %>
 </ul>
 <%if @trip.volunteer_id == @manager.id%>
-    <%=button_to "Sign up for trip.",@trip,method: :patch%>
+    <%=button_to "Sign up for trip",@trip,method: :patch%>
 <%else%>
-    <%=button_to "Remove trip.",@trip,method: :patch%>
+    <%=button_to "Remove trip",@trip,method: :patch%>
 <%end%>
+<%=button_to "Back to Volunteer Page", @viewer, method: :get%>

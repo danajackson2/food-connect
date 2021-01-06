@@ -21,15 +21,16 @@
     <tr>
         <th>Trip ID</th>
         <th>Info</th>
+        <th>Distance</th>
         <th>Link</th>
     </tr>
     <%@mytrips.each do |trip|%>
     <tr>
         <td><%=trip.id%></td>
         <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
+        <td><%=trip.distance(@volunteer)%> mi</td>
         <td><%=link_to "Trip", trip%></td>
     <%end%>
     </tr>
 
 </table>
-<%= button_to "Logout",logout_path,method: :delete%>
