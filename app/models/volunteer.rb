@@ -5,4 +5,5 @@ class Volunteer < ApplicationRecord
     has_secure_password
     validates_uniqueness_of :username
     validates_length_of :name, minimum: 2, maximum: 25
+    validates :location, numericality: {greater_than: 1, less_than: 100}
 end
