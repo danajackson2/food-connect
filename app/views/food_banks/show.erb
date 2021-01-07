@@ -1,6 +1,6 @@
 <h1>Hi, <%= @food_bank.name%> foodbank</h1>
 <h3>Create a Trip</h3>
-<%=form_with url: "/food_banks/data", method: :get do |f|%>
+<%=form_with url: "/food_banks/data", method: :get, local: true do |f|%>
     <%=f.collection_select :grocery_store_id, @grocery_stores, :id, :name%>
     <%=f.submit "Select"%>
 <%end%>

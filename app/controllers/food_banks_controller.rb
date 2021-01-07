@@ -1,9 +1,16 @@
 class FoodBanksController < ApplicationController
     skip_before_action :require_login, only:[:create, :new]
+    before_action :has_access?, only:[:show]
+
+    def has_access?
+        if @user.class != FoodBank
+            redirect_to @user
+        end
+    end
 
     def new
         if session[:username]
-            redirect_to FoodBank.find_by(username: session[:username])
+            redirect_to @user
         end
         @food_bank = FoodBank.new
     end

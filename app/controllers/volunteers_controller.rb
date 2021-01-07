@@ -1,9 +1,16 @@
 class VolunteersController < ApplicationController
     skip_before_action :require_login, only:[:create, :new]
+    before_action :has_access?, only:[:show, :edit, :update, :destroy]
+
+    def has_access?
+        if @user.class != Volunteer
+            redirect_to @user
+        end
+    end
 
     def new
         if session[:username]
-            redirect_to Volunteer.find_by(username: session[:username])
+            redirect_to @user
         end
         @volunteer = Volunteer.new
     end
