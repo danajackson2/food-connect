@@ -5,4 +5,10 @@ class FoodBank < ApplicationRecord
     has_many :food_items, as: :owner
     has_secure_password
     validate :username_unique
+
+    def self.min_capacity
+        FoodBank.all.min_by do |f|
+            f.food_items.length
+        end
+    end
 end

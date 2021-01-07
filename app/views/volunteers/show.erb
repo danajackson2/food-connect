@@ -5,12 +5,14 @@
     <tr>
         <th>Trip ID</th>
         <th>Info</th>
+        <th>Distance</th>
         <th>Link</th>
     </tr>
     <%@trips.each do |trip|%>
     <tr>
         <td><%=trip.id%></td>
         <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
+        <td><%=trip.distance(@volunteer)%> mi</td>
         <td><%=link_to "Trip", trip%></td>
     <%end%>
     </tr>
@@ -24,12 +26,28 @@
         <th>Distance</th>
         <th>Link</th>
     </tr>
-    <%@mytrips.each do |trip|%>
+    <%@my_trips.each do |trip|%>
     <tr>
         <td><%=trip.id%></td>
         <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
         <td><%=trip.distance(@volunteer)%> mi</td>
         <td><%=link_to "Trip", trip%></td>
+    <%end%>
+    </tr>
+
+</table>
+<h3>Your past trips</h3>
+<table style="width:60%">
+    <tr>
+        <th>Trip ID</th>
+        <th>Info</th>
+        <th>Distance</th>
+    </tr>
+    <%@past_trips.each do |trip|%>
+    <tr>
+        <td><%=trip.id%></td>
+        <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
+        <td><%=trip.distance(@volunteer)%> mi</td>
     <%end%>
     </tr>
 

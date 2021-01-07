@@ -12,11 +12,15 @@ class TripsController < ApplicationController
         params[:trip][:food_items].each do |id|
             FoodItem.find(id.to_i).update(owner_type: "Trip", owner_id: @trip.id)
         end
-        redirect_to @user
+        flash[:notifications] = "Thank you for creating a trip!"
+        redirect_to trips_path
     end
 
     def show
         @trip = Trip.find(params[:id])
+        if @trip.completed == true
+            redirect_to @user
+        end
         @manager = Volunteer.manager
         @viewer = Volunteer.find_by(username: session[:username])
     end
@@ -33,6 +37,15 @@ class TripsController < ApplicationController
 
     def index
         @trips = Trip.all.select{|t|t.volunteer.username == "Manager"}
+    end
+
+    def complete
+        @trip = Trip.find(params[:trip_id].to_i)
+        @trip.food_items.each do |f|
+            f.update(owner_type: "FoodBank", owner_id: @trip.food_bank.id)
+        end
+        @trip.update(completed: true)
+        redirect_to @user
     end
 
 end

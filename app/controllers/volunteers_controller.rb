@@ -28,8 +28,9 @@ class VolunteersController < ApplicationController
 
     def show
         @volunteer = Volunteer.find(params[:id])
-        @trips = Volunteer.manager.trips
-        @mytrips = @volunteer.trips
+        @trips = Volunteer.manager.trips.select{|t| t.completed == false}.sort_by{|t| t.distance(@volunteer)}
+        @my_trips = @volunteer.trips.select{|trip| trip.completed == false}
+        @past_trips = @volunteer.trips.select{|trip| trip.completed == true}
     end
 
     def edit

@@ -1,4 +1,7 @@
 <h1>All Available Trips</h1>
+<%if flash[:notifications]%>
+    <%= flash[:notifications] %>
+<%end%>
 <table style="width:60%">
     <tr>
         <th>Trip ID</th>

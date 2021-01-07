@@ -11,6 +11,7 @@ Food Items:
 <%if @trip.volunteer_id == @manager.id%>
     <%=button_to "Sign up for trip",@trip,method: :patch%>
 <%else%>
+    <%=button_to "Complete trip", { :controller => "trips", :action => "complete"},:params => {:trip_id => @trip.id}, :method => :patch %>
     <%=button_to "Remove trip",@trip,method: :patch%>
 <%end%>
 <%=button_to "Back to Volunteer Page", @viewer, method: :get%>

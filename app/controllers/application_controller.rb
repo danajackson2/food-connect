@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
     end
 
     def home
+        @active = Volunteer.most_active
+        @food_bank_min = FoodBank.min_capacity
+        @best_store = GroceryStore.best_store
     end
 
     private
