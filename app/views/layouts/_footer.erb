@@ -1,5 +1,4 @@
-<div class="container">
-      <%if !session[:username] %>
-            <%= link_to "Food Bank Register", new_food_bank_path, method: :get%>
-      <%end%>
-</div>
+
+<%if !session[:username] %>
+      <%= link_to "Food Bank Register", new_food_bank_path, method: :get%>
+<%end%>
