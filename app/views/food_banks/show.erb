@@ -1,14 +1,15 @@
 <h1><%= @food_bank.name%>'s Page</h1>
-<h3>Create a Trip</h3>
+<h2>Create a Trip</h2>
+<h4>Select a Grocery Store to see inventory</h4>
 <%=form_with url: "/food_banks/data", method: :get, local: true do |f|%>
     <%=f.collection_select :grocery_store_id, @grocery_stores, :id, :name%>
     <%=f.submit "Select"%>
 <%end%>
 
 <%if cookies[:grocery_store]%>
+    <h4><%=@grocery_store.name%> Inventory:</h4>
     <%=form_with model: @trip do |f|%>
-        <%=f.label :food_items%>
         <%=f.collection_check_boxes :food_items, @food_items, :id, :name %>
-        <%=f.submit "Select Items"%>
+        <%=f.submit "Create Trip"%>
     <%end%>
 <%end%>
