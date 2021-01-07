@@ -31,6 +31,7 @@ class FoodBanksController < ApplicationController
         @grocery_stores = GroceryStore.all
         @trip = Trip.new
         if cookies[:grocery_store]
+            @grocery_store = GroceryStore.find(cookies[:grocery_store].to_i)
             @food_items = GroceryStore.find(cookies[:grocery_store].to_i).food_items
         end
     end
