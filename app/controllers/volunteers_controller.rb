@@ -10,7 +10,7 @@ class VolunteersController < ApplicationController
 
     def create
         @vol = Volunteer.create(volunteer_params)
-        if @vol.valid?
+        if @vol.id != nil
             session[:username] = @vol.username
             redirect_to @vol
         else

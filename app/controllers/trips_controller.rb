@@ -7,6 +7,14 @@ class TripsController < ApplicationController
         end
     end
 
+    def new
+
+    end
+
+    def create
+        
+    end
+
     def show
         @trip = Trip.find(params[:id])
         @manager = Volunteer.manager
@@ -21,6 +29,10 @@ class TripsController < ApplicationController
             @trip.update(volunteer_id: Volunteer.manager.id)
         end
         redirect_to Volunteer.find_by(username: session[:username])
+    end
+
+    def index
+        @trips = Trip.all.select{|t|t.volunteer.username == "Manager"}
     end
 
 end

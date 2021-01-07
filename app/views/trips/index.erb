@@ -1,0 +1,14 @@
+<h1>All Available Trips</h1>
+<table style="width:60%">
+    <tr>
+        <th>Trip ID</th>
+        <th>Info</th>
+    </tr>
+    <%@trips.each do |trip|%>
+    <tr>
+        <td><%=trip.id%></td>
+        <td><%="#{trip.grocery_store.name} to #{trip.food_bank.name}"%></td>
+    <%end%>
+    </tr>
+
+</table><br>

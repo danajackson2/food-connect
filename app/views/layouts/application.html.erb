@@ -16,11 +16,13 @@
           <%=button_to "Logout", logout_path, method: :delete%>
       <%else%>
           <%= link_to "Login Page", login_path, method: :get%>
-          <%= link_to "Register Page", new_volunteer_path, method: :get%>
+          <%= link_to "Volunteer Register", new_volunteer_path, method: :get%>
       <%end%>
 
     <%= yield %>
 
-
+    <%if !session[:username] %>
+      <%= link_to "Food Bank Register", new_food_bank_path, method: :get%>
+    <%end%>
   </body>
 </html>
