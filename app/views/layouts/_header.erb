@@ -1,0 +1,8 @@
+<h1><%=link_to "Food Connect", root_path%></h1>
+<%if session[:username] %>
+    <h4>Welcome, <%=link_to @user.name, @user%></h4>
+    <%=button_to "Logout", logout_path, method: :delete%>
+<%else%>
+    <%= link_to "Login Page", login_path, method: :get%>
+    <%= link_to "Volunteer Register", new_volunteer_path, method: :get%>
+<%end%>
