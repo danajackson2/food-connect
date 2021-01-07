@@ -12,25 +12,9 @@ Trip.destroy_all
 Volunteer.destroy_all
 FoodItem.destroy_all
 
-# 10.times do
-#     Volunteer.create({
-#       name: Faker::Name.name,
-#       location: (1..100).to_a.sample,
-#       username: Faker::Name.name,
-#       password_digest: Faker::Bank.account_number
-#     })
-# end
 
 Volunteer.create(name: "Manager",username: "Manager", location: 1, password_digest: "whatever")
 
-# 10.times do
-#   FoodBank.create({
-#     name: "FB: #{Faker::Company.name}",
-#     username: Faker::Name.name,
-#     password_digest: "abcd",
-#     location: (1..100).to_a.sample
-#   })
-# end
 
 FoodBank.create({name: "Hopelink", username:"hopelink", password_digest:"abcd", location: (1..20).to_a.sample})
 FoodBank.create({name: "Ballard Food Bank", username:"bfb", password_digest:"abcd", location: (1..20).to_a.sample})
@@ -47,13 +31,6 @@ GroceryStore.create({name: "Trader Joes",location: (1..20).to_a.sample})
 GroceryStore.create({name: "Fred Meyer",location: (1..20).to_a.sample})
 GroceryStore.create({name: "Target",location: (1..20).to_a.sample})
 GroceryStore.create({name: "Central Market",location: (1..20).to_a.sample})
-
-# 10.times do 
-#   GroceryStore.create({
-#     name: "GS: #{Faker::Company.name}",
-#     location: (1..100).to_a.sample
-#   })
-# end
 
 10.times do
   Trip.create({

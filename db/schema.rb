@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2021_01_04_193226) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "distance"
     t.integer "grocery_store_id"
     t.integer "food_bank_id"
     t.integer "volunteer_id"

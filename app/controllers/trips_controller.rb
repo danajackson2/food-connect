@@ -7,10 +7,12 @@ class TripsController < ApplicationController
         end
     end
 
-    def new
-    end
-
     def create
+        @trip = Trip.create(grocery_store_id: cookies[:grocery_store], food_bank_id: @user.id, volunteer_id: Volunteer.manager.id)
+        params[:trip][:food_items].each do |id|
+            FoodItem.find(id.to_i).update(owner_type: "Trip", owner_id: @trip.id)
+        end
+        redirect_to @user
     end
 
     def show

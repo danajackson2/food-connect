@@ -8,7 +8,7 @@
 <%if cookies[:grocery_store]%>
     <%=form_with model: @trip do |f|%>
         <%=f.label :food_items%>
-        <%=f.collection_check_boxes :food_items, @food_items, :id, :name %>
+        <%=f.collection_check_boxes :food_items, @food_items, :id, :name, include_hidden: false%>
         <%=f.submit "Select Items"%>
     <%end%>
 <%end%>
