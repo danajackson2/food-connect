@@ -30,7 +30,6 @@ class FoodBanksController < ApplicationController
         @food_bank = FoodBank.find(params[:id])
         @grocery_stores = GroceryStore.all
         @trip = Trip.new
-        @cookies = cookies[:grocery_store]
         if cookies[:grocery_store]
             @food_items = GroceryStore.find(cookies[:grocery_store].to_i).food_items
         end

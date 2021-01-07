@@ -1,4 +1,4 @@
-<h1>Hi, <%= @food_bank.name%> foodbank</h1>
+<h1><%= @food_bank.name%>'s Page</h1>
 <h3>Create a Trip</h3>
 <%=form_with url: "/food_banks/data", method: :get, local: true do |f|%>
     <%=f.collection_select :grocery_store_id, @grocery_stores, :id, :name%>
@@ -6,7 +6,6 @@
 <%end%>
 
 <%if cookies[:grocery_store]%>
-    <%=@cookies%>
     <%=form_with model: @trip do |f|%>
         <%=f.label :food_items%>
         <%=f.collection_check_boxes :food_items, @food_items, :id, :name %>
