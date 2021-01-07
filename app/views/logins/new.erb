@@ -10,6 +10,9 @@
 
 <%if flash[:errors]%>
     <%flash[:errors].each do |e|%>
+        <div class="alert alert-warning" role="alert">
+        <%=e%>
+        </div>
         <%=e%>
     <%end%>
 <%end%>
