@@ -3,22 +3,21 @@
   <form action='/login' method='post'>
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <div class="mb-3">
-    <label>Username:</label>
-    <input name='username'>
+      <label>Username</label>
+      <input name='username'>
     </div>
     <div class="mb-3">
-    <label>Password:</label>
-    <input type='password' name='password'>
+      <label>Password</label>
+      <input type='password' name='password'>
     </div>
-    <input type='submit' value='login'>
+    <input type='submit' value='login' , class="btn btn-outline-success">
   </form>
 </div>
 
 <%if flash[:errors]%>
     <%flash[:errors].each do |e|%>
         <div class="alert alert-warning" role="alert">
-        <%=e%>
+          <%=e%>
         </div>
-        <%=e%>
     <%end%>
 <%end%>

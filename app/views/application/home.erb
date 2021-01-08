@@ -1,14 +1,18 @@
-<h1>Welcome!</h1>
-<p>Did you know that 30-40% of food is wasted each year in America? Our mission at Food Connect is to link Grocery Stores, Foobanks, and volunteer drivers in an effort to reduce this egregious food waste. As a Volunteer you can select trips between a specific Grocery Store and Foodbank based on the distance of the trip. As a Food Bank you can create trips to be added to the queue for volunteers to pick up. Thanks for visiting! </p>
-<%=image_tag("foodbank.jpeg")%>
-<h2>Analytics</h2>
-<%if Volunteer.all.length > 1 %>
-<p>Volunteer of the month: <%= @active.name%> with <%= @active.past_trips.length%> trip/trips.</p>
-<p></p>
-<%end%>
-<p>Food Bank most in need of volunteers: <%= @food_bank_min.name%></p>
-<p><%= @food_bank_min.name%> only has <%= @food_bank_min.food_items.length%> food items.</p>
-<p></p>
-<%if GroceryStore.best_store != nil%>
-<p>Most active Grocery Store: <%= @best_store.name%> with <%= @best_store.past_trips.length%> trip/trips completed.</p>
-<%end%>
+<div class="text-center">
+<h1 style="padding-top: 20px">Welcome!</h1>
+    <p style="padding-top: 20px">Did you know that 30-40% of food is wasted each year in America? Our mission at Food Connect is to link Grocery Stores, Foobanks, and volunteer drivers in an effort to reduce this egregious food waste. As a Volunteer you can select trips between a specific Grocery Store and Foodbank based on the distance of the trip. As a Food Bank you can create trips to be added to the queue for volunteers to pick up. Thanks for visiting! </p>
+</div>
+
+<%=image_tag("foodbank.jpeg", class: "rounded mx-auto d-block", :style=>"padding-top: 20px")%>
+
+<div class="text-center" style="margin-top: 40px;">
+    <h2>Analytics</h2>
+    <%if Volunteer.all.length > 1 %>
+        <p>Volunteer of the month: <%= @active.name%> with <%= @active.past_trips.length%> trip/trips.</p>
+    <%end%>
+        <p>Food Bank most in need of volunteers: <%= @food_bank_min.name%></p>
+        <p><%= @food_bank_min.name%> only has <%= @food_bank_min.food_items.length%> food items.</p>
+    <%if GroceryStore.best_store != nil%>
+        <p>Most active Grocery Store: <%= @best_store.name%> with <%= @best_store.past_trips.length%> trip/trips completed.</p>
+    <%end%>
+</div>

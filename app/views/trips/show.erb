@@ -3,15 +3,17 @@ Distance: <%=@trip.distance(@viewer)%> mi<br>
 Foodbank: <%=@trip.food_bank.name%><br>
 Grocery Store: <%=@trip.grocery_store.name%><br>
 Food Items:
-<ul>
-    <%@trip.food_items.each do |i|%>
-            <li><%=i.name%></li>
-    <% end %>
-</ul>
+<div style="width:300px">
+    <ul class="list-group list-group-flush">
+        <%@trip.food_items.each do |i|%>
+                <li class="list-group-item"><%=i.name%></li>
+        <% end %>
+    </ul>
+</div>
 <%if @trip.volunteer_id == @manager.id%>
-    <%=button_to "Sign up for trip",@trip,method: :patch%>
+    <%=button_to "Sign up for trip",@trip,method: :patch, :class=>"btn btn-outline-success"%>
 <%else%>
-    <%=button_to "Complete trip", { :controller => "trips", :action => "complete"},:params => {:trip_id => @trip.id}, :method => :patch %>
-    <%=button_to "Remove trip",@trip,method: :patch%>
+    <%=button_to "Complete trip", { :controller => "trips", :action => "complete"},:params => {:trip_id => @trip.id}, :method => :patch, :class=>"btn btn-outline-success" %>
+    <%=button_to "Remove trip",@trip,method: :patch, :class=>"btn btn-outline-success"%>
 <%end%>
-<%=button_to "Back to Volunteer Page", @viewer, method: :get%>
+<%=button_to "Back to Volunteer Page", @viewer, method: :get, :class=>"btn btn-outline-success"%>

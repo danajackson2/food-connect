@@ -10,7 +10,7 @@
     <%=f.text_field :password%><br>
     <%=f.label :password_confirmation%>
     <%=f.text_field :password_confirmation%><br>
-    <%=f.submit "Create FoodBank"%>
+    <%=f.submit "Create FoodBank", :class=>"btn btn-outline-success"%>
 <%end%>
 
 <%if flash[:errors]%>

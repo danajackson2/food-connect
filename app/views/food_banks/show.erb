@@ -1,10 +1,12 @@
 <h1><%= @food_bank.name%>'s Page</h1>
 <h2>Your Inventory</h2>
-<ul>
-<% @food_bank.food_items.each do |f| %>
-    <li><%= f.name %></li>
-<%end%>
-</ul>
+<div style="width:300px">
+    <ul class="list-group list-group-flush">
+        <% @food_bank.food_items.each do |f| %>
+            <li class="list-group-item"><%= f.name %></li>
+        <%end%>
+    </ul>
+</div>
 <h2>Create a Trip</h2>
 <h4>Select a Grocery Store to see inventory</h4>
 <%=form_with url: "/food_banks/data", method: :get, local: true do |f|%>

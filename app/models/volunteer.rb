@@ -19,9 +19,7 @@ class Volunteer < ApplicationRecord
     end
 
     def past_trips
-        byebug
         self.trips.select{|t| t.completed == true}
     end
-
 
 end
