@@ -1,23 +1,21 @@
-<h1>Login</h1>
-<div class="row">
+<h1 style="padding-top:20px">Login</h1>
+<div class="mb-3" style="width:300px">
   <form action='/login' method='post'>
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <div class="mb-3">
-      <label>Username</label>
-      <input name='username'>
+    <label class="form-label">Username</label>
+    <input name='username' class="form-control" style="background-color:#cbdeca; border-color:black">
+    <label class="form-label">Password</label>
+    <input type='password' name='password' class="form-control" style="background-color:#cbdeca; border-color:black">
+    <div style="padding-top:20px">
+      <input type='submit' value='login' class="btn btn-outline-success">
     </div>
-    <div class="mb-3">
-      <label>Password</label>
-      <input type='password' name='password'>
-    </div>
-    <input type='submit' value='login' , class="btn btn-outline-success">
   </form>
 </div>
 
 <%if flash[:errors]%>
     <%flash[:errors].each do |e|%>
-        <div class="alert alert-warning" role="alert">
-          <%=e%>
+        <div class="alert alert-danger" role="alert">
+          <%=e%><br>
         </div>
     <%end%>
 <%end%>

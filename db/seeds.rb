@@ -40,7 +40,7 @@ GroceryStore.create({name: "Central Market",location: (1..20).to_a.sample})
   })
 end
 
-50.times do
+500.times do
   FoodItem.create({
     name: Faker::Food.ingredient,
     owner_type: "GroceryStore",
@@ -53,6 +53,14 @@ end
     name: Faker::Food.ingredient,
     owner_type: "Trip",
     owner_id: Trip.all.map{|g| g.id}.sample
+  })
+end
+
+10.times do
+  FoodItem.create({
+    name: Faker::Food.ingredient,
+    owner_type: "FoodBank",
+    owner_id: 9
   })
 end
 

@@ -1,14 +1,24 @@
-<h2>Edit Information</h2>
-<%= form_with model: @vol do |f|%>
-    <%= f.label :name%>
-    <%= f.text_field :name%>
-    <%= f.submit "Edit User"%>
-<%end%>
-<%= button_to "Delete Account",@vol,method: :delete, :class=>"btn btn-outline-success"%>
+<h2 style="padding-top:20px">Edit Information</h2>
+<div class="mb-3" style="width:300px">
+    <%= form_with model: @vol do |f|%>
+        <%= f.label :name, :class=>"form-label"%>
+        <%= f.text_field :name, :class=>"form-control", :style=>"background-color:#cbdeca; border-color:#034f00"%>
+        <div style="padding-top:20px">
+            <%= f.submit "Edit User", :class=>"btn btn-outline-success"%>
+        </div>
+    <%end%>
+</div>
+<div>
+    <%= button_to "Delete Account",@vol,method: :delete, :class=>"btn btn-outline-success"%>
+</div>
 
 <%if flash[:errors]%>
     <%flash[:errors].each do |e|%>
-        <%=e%>
+        <div class="alert alert-danger" role="alert" style="padding-top:20px">
+            <%=e%><br>
+        </div>
     <%end%>
 <%end%>
-<%=button_to "Back to Volunteer Page", @vol, method: :get, :class=>"btn btn-outline-success"%>
+<div style="padding-top:20px">
+    <%=button_to "Back to Volunteer Page", @vol, method: :get, :class=>"btn btn-outline-success"%>
+</div>

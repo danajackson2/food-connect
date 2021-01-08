@@ -1,6 +1,9 @@
-<h1>All Available Trips</h1>
+<h1 style="padding-top:20px">All Available Trips</h1>
+<p style="font-size:25px">You will be notified when a Volunteer selects your trip and your food items are on the way!</p>
 <%if flash[:notifications]%>
-    <%= flash[:notifications] %>
+    <div class="alert alert-success" role="alert">
+        <%= flash[:notifications] %>
+    </div>
 <%end%>
 <table style="width:60%" class="table">
     <tr>

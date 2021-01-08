@@ -46,7 +46,6 @@ class VolunteersController < ApplicationController
             flash[:errors] = @vol.errors.full_messages
             redirect_to edit_volunteer_path
         end
-
     end
 
     def destroy

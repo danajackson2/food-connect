@@ -1,20 +1,34 @@
-<h1>Register New FoodBank</h1>
-<%=form_with model: @food_bank do |f|%>
-    <%=f.label :name%>
-    <%=f.text_field :name%><br>
-    <%=f.label :username%>
-    <%=f.text_field :username%><br>
-    <%=f.label :location%>
-    <%=f.number_field :location%><br>
-    <%=f.label :password%>
-    <%=f.text_field :password%><br>
-    <%=f.label :password_confirmation%>
-    <%=f.text_field :password_confirmation%><br>
-    <%=f.submit "Create FoodBank", :class=>"btn btn-outline-success"%>
-<%end%>
-
-<%if flash[:errors]%>
-    <%flash[:errors].each do |e|%>
-        <%=e%>
-    <%end%>
-<%end%>
+<h1 style="padding-top:20px">Register as a new Food Bank</h1>
+<div class="containers">
+    <div class="row">
+        <div class="col-sm">
+            <div class="mb-3" style="width:300px">
+                <%=form_with model: @food_bank do |f|%>
+                    <%=f.label :name, :class=>"form-label"%>
+                    <%=f.text_field :name, :class=>"form-control", :style=>"background-color:#cbdeca; border-color:#034f00"%><br>
+                    <%=f.label :username, :class=>"form-label"%>
+                    <%=f.text_field :username, :class=>"form-control", :style=>"background-color:#cbdeca; border-color:#034f00"%><br>
+                    <%=f.label :location, :class=>"form-label"%>
+                    <%=f.number_field :location, :class=>"form-control", :style=>"background-color:#cbdeca; border-color:#034f00"%><br>
+                    <%=f.label :password, :class=>"form-label"%>
+                    <%=f.text_field :password, :class=>"form-control", :style=>"background-color:#cbdeca; border-color:#034f00"%><br>
+                    <%=f.label :password_confirmation, :class=>"form-label"%>
+                    <%=f.text_field :password_confirmation, :class=>"form-control", :style=>"background-color:#cbdeca; border-color:#034f00"%><br>
+                    <%=f.submit "Register", :class=>"btn btn-outline-success"%>
+                <%end%>
+            </div>
+            <%if flash[:errors]%>
+                <%flash[:errors].each do |e|%>
+                    <div class="alert alert-danger" role="alert">
+                        <%=e%><br>
+                    </div>
+                <%end%>
+            <%end%>
+        </div>
+        <div class="col-sm">
+            <div>   
+                <%=image_tag("https://cattailorganics.com/wp-content/uploads/2018/12/Beautiful-Carrots.jpg", class: "rounded mx-auto d-block", :style=>"padding-top: 20px; width: 500px")%>
+            </div>
+        </div>
+    </div>  
+</div>
