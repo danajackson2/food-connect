@@ -36,6 +36,6 @@ Thanks to the following people who have contributed to this project:
 - [@danajackson](https://github.com/danajackson2) :book: :bug:
 - [@dainbrownlow](https://github.com/dainbrownlow08)📖 :bug:
 ## Contact
-If you want to contact us you can reach us at <dain.brownlow@outlook.com>, or <danajackson2@gmail.com>.
+If you want to contact me you can reach us at <dain.brownlow@outlook.com>, or <danajackson2@gmail.com>.
 ## License
 This project uses the following license: Learn.co Educational Content License.
