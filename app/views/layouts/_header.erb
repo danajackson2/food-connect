@@ -6,7 +6,7 @@
             </svg>
             <h1><%=link_to "Food Connect", root_path, :style=>"text-decoration: none; color: #cbdeca; font-family: 'Abril Fatface', cursive; font-size: 55px"%></h1>
         </ul>
-        <%if session[:username] %>
+      <%if session[:username] %>
             <ul class="nav justify-content-end">
                 <li class="nav-item" style="margin-right: 40px; text-decoration: none; color: #cbdeca;"><h5>Welcome, <%=link_to @user.name, @user, :style=>"color: #cbdeca;"%></h5></li>
                 <li class="nav-item"><%=button_to "Logout", logout_path, method: :delete, :class=>"btn btn-outline-success"%></li>
